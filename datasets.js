@@ -1,14 +1,16 @@
+Datasets = new Mongo.Collection('cobaset');
+
 if (Meteor.isClient) {
   // counter starts at 0
-  Session.setDefault('counter', 0);
+  // Session.setDefault('counter', 0);
 
-  Template.hello.helpers({
-    counter: function () {
-      return Session.get('counter');
+  Template.dataset.helpers({
+    datasets: function () {
+      return Datasets.find();
     }
   });
 
-  Template.hello.events({
+  Template.dataset.events({
     'click button': function () {
       // increment the counter when button is clicked
       Session.set('counter', Session.get('counter') + 1);
